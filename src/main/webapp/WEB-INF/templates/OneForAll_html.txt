@@ -1,0 +1,65 @@
+<html>
+<head>
+<style>
+body {
+	margin: 3px 0px 0px 0px;
+	padding: 0px;
+	background-color: #FFFFFF;
+	font-family: Verdana, Helvetica, Tahoma, Arial;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;
+}
+.dispHead {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	border-color: #000000;
+	color: #000000;
+	background-color: #fbfbfb;
+	FONT-WEIGHT: bold;
+	font-size: 11px;
+}
+.dispValue0 {
+	border-bottom: 1px solid #EEEEEE;
+	font-size: 11px;
+	COLOR: black;
+}
+.dispValue1 {
+	border-bottom: 1px solid #EEEEEE;
+	background-color: #fbfbfb;
+	font-size: 11px;
+	COLOR: black;
+}
+</style>
+</head>
+<body>
+<div>
+Dear Sir/Madam:<br/>
+<br/>
+The following germplasm request has been sent through the System-wide Information Network for Genetic Resources (SINGER) online germplasm ordering system.<br/>
+<br/>
+The accession details requested are:<br/>
+<br/>
+<<acc_data>>
+<br/>
+<table>
+<tr><td class="dispHead" colspan="2">Requester Details</td></tr>
+<tr><td class="dispHead">Name</td><td class="dispValue0"><<req_name>></td></tr>
+<tr><td class="dispHead">Institute</td><td class="dispValue0"><<req_inst>></td></tr>
+<tr><td class="dispHead">Address</td><td class="dispValue1"><<req_add>></td></tr>
+<tr><td class="dispHead">Email</td><td class="dispValue0"><<req_email>></td></tr>
+<tr><td class="dispHead">Category</td><td class="dispValue1"><<req_type>></td></tr>
+</table>
+<br/>
+Copy of this mail has been sent to the requester. Both of you can use the "reply all" option to communicate. <br/>
+By using the "reply all" option, you should delete from the  "To" Field the adress noreply@singer.cgiar.org, if you don't want to have a Mail delivery error<br/>
+<br/>
+Thanks for using SINGER online germplasm ordering system.<br/>
+<br/>
+Kind regards,<br/>
+The SINGER Team<br/>
+<a href="http://singer.cgiar.org/"  target="_new">http://singer.cgiar.org</a>
+</div>
+</body>
+</html>
+

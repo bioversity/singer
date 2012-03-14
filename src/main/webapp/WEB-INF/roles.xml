@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<roles>
+	<role page="/addCountryList.do" type="admin" />
+	<role page="/editCountryList.do" type="admin" />
+	<role page="/prepareMemberForm.do?action=edit" type="admin"/>
+    <role page="/updateMember.do" type="admin"/>
+    <role page="/index.jsp?page=shopnow" type="admin"/>
+</roles>

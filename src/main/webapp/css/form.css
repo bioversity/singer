@@ -1,0 +1,213 @@
+body {
+	margin: 2%;
+	font-size:12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background : #ffffff;
+}
+
+input,select,textarea
+{
+	font: 12px/1.4 Verdana, Geneva, Arial, Helvetica, sans-serif;
+}
+
+h1 { font-size: 20px; }
+h2 { font-size: 16px; margin: 3em 0 0.5em; }
+h3 { font-size: 14px; margin: 2em 0 0.5em; }
+h4 { font-size: 12px; }
+h5 { font-size: 11px; }
+h6 { font-size: 10px; }
+
+hr { color: #999999; height: 1px; }
+
+img { border: none; }
+th { text-align: left; }
+
+a:link.headerlinks{
+	color:blue; margin: 0px 2px 0px 2px;
+}
+a:visited.headerlinks{
+	color:blue; margin: 0px 2px 0px 2px;
+}
+a:hover.headerlinks{
+	color:blue; margin: 0px 2px 0px 2px;
+}
+
+a:link.headerbluelinks{
+	color:#369; margin: 0px 2px 0px 2px;font-size: 10px; font-weight:bold;
+}
+a:visited.headerbluelinks{
+	color:#369; margin: 0px 2px 0px 2px;font-size: 10px;font-weight:bold;
+}
+a:hover.headerbluelinks{
+	color:#369; margin: 0px 2px 0px 2px;font-size: 10px;font-weight:bold;
+}
+
+.logindiv{width:95%;}
+	
+.headertable {border:none; padding: 0;}
+.header {height: 50px;  border: none; border-bottom: none; margin-bottom: 2%;}
+.footer {border: none; border-top: none;}
+.belowtr{ height: 100%; margin-top: 2px;}
+.sidebar {width: 15%; border: none; height: auto;}
+.mainpart {width: 85%; border:none; height: auto; border-left:none; margin: 0px 2px 0px 2px; }
+.personalpart {width: 100%; border: solid 1px; height: auto; background-color: #EEEEEE}
+.imagepart {width: 50%;height: auto;}
+.headermainpart {width: 40%; height: auto; }
+.headersearchpart {width: 10%; height: auto;}
+
+.pestTable{
+	border: 1px solid #A8B2BB; 
+}
+.pestHead {
+	width:20%; background: #EEEEEE; 	FONT-WEIGHT: bold; FONT-SIZE: 10pt; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.pestValue {
+	width:80%; border-bottom: 1px solid #EEEEEE; COLOR: #aa0000; FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.distTable{
+	border: 1px solid #A8B2BB; 
+}
+.distHead {
+	width:20%; background: #EEEEEE; 	FONT-WEIGHT: bold; FONT-SIZE: 9pt; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.distValue {
+	width:80%; border-bottom: 1px solid #EEEEEE; border-left: 1px solid #EEEEEE;border-right: 1px solid #EEEEEE;COLOR: #aa0000; FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.distTotValue {
+	width:80%; border-bottom: 1px solid #EEEEEE; border-left: 1px solid #EEEEEE;border-right: 1px solid #EEEEEE;FONT-SIZE: 8pt; COLOR: #aa0000; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+.collTable{
+	border: 1px solid #A8B2BB; 
+}
+.collHead {
+	background: #EEEEEE; FONT-WEIGHT: bold; FONT-SIZE: 10pt; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.collValue {
+	border-bottom: 1px solid #EEEEEE; COLOR: #aa0000; FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.cartTable{
+	border: 1px solid #A8B2BB; 
+}
+.cartHead {background: #EEEEEE; FONT-WEIGHT: bold; FONT-SIZE: 8pt; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.cartValue {border-bottom: 1px solid #EEEEEE; COLOR: #aa0000; FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.pestsubValue {
+	width:80%; border-bottom: 1px solid #EEEEEE; COLOR: #aa0000; FONT-SIZE: 10pt; COLOR: black; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.pestDiv
+{
+	background: #FFFFFF;
+}
+.pestDivSel
+{
+	background: #EEEEEE;
+	FONT-WEIGHT:bold;
+	border: 1px solid #A8B2BB;
+}
+.searchHeading {
+	background: #EEEEEE;border: 1px solid #A8B2BB;FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #336699;FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+.searchResults {
+	border-bottom: 1px solid #A8B2BB; COLOR: #aa0000; FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+.searchResultsUnit {
+	text-align:center; border-bottom: 1px solid #A8B2BB; COLOR: #aa0000; FONT-SIZE: 8pt; COLOR: black; FONT-FAMILY: Trebuchet MS, Verdana, Arial, Helvetica
+}
+
+.error { color: #FF0000; }
+.user {color:#000000; font-weight: bold;}
+.icon { float: right; margin: 5px; }
+.intro { font-size: 14px;  line-height: 1.6; font-weight: bold;} 
+.label {	font-weight: bold; width: 260px; }
+.result { width: 100%; background: #eef; }
+.BigTitleOrange { color: #fa7231; font-size: 18px; font-family: Verdana, Arial, Helvetica, sans-serif; letter-spacing: 0.9px }
+
+
+
+.dtools {
+
+	padding: 5px;
+	margin: 2px;
+	font: normal 10px verdana;
+	width: 130px;
+}
+.dtool{
+	background: #FFFFFF;
+	color: navy;
+	border: 2px solid navy;
+	text-align:left;
+	vertical-align:middle;
+	font: normal 10px verdana;
+	padding: 2px;
+	cursor: pointer;
+	margin: 3px;
+}
+
+
+.buttons {
+
+	padding: 5px;
+	margin: 2px;
+	font: normal 10px verdana;
+	width: 130px;
+
+}
+
+.button, .selectedButton, .buttonB, .button3 {
+	background: #FFFFFF;
+	color: navy;
+	border: 2px solid navy;
+	text-align:center;
+	vertical-align:middle;
+	font: normal 10px verdana;
+	padding: 2px;
+	cursor: pointer;
+	margin: 3px;
+}
+.button3 {
+	margin: 0px;
+}
+
+.selectedButton {
+	border: 2px solid #008000;
+	background: #80FF80;
+	color: #008000;
+}
+.buttonB {
+	border: 2px solid #fa7231;
+	background: #FFFFFF;
+
+}
+.button:hover, .buttonB:hover, .button3:hover {
+	background: #eeeeee;
+	color: blue;
+	border: 2px solid #eeeeee;
+}
+
+
+.wText {
+	border: 1px solid gray;
+	padding: 5px;
+	margin: 2px;
+	font: bold 10px verdana;
+	width: 200px;
+}
+
+.dText {
+	border: 1px solid gray;
+	padding: 5px;
+	margin: 2px;
+	font: normal 10px verdana;
+	width: 800px;
+}
+

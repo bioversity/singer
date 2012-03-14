@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="accForm" type="org.sgrp.singer.form.AccessionForm" />
+		<form-bean name="loginForm" type="org.sgrp.singer.form.LoginForm" />
+		<form-bean name="logoutForm" type="org.sgrp.singer.form.GenericForm" />
+		<form-bean name="searchForm" type="org.sgrp.singer.form.SearchForm" />
+		<form-bean name="memberForm" type="org.sgrp.singer.form.MemberForm" />
+		<!-- Added by Gautier for Connection Demo with the PID server -->
+		<form-bean name="loginPIDForm" type="org.sgrp.singer.form.LoginPIDForm" />
+		<!-- Added by Guilhem for pre-PID order recovery -->
+		<form-bean name="recoverPreviousOrders" type="org.sgrp.singer.form.LoginForm" />
+	</form-beans>
+	<global-forwards>
+		<forward name="home" path="/index.jsp" redirect="true" />
+	</global-forwards>
+	<action-mappings>
+		<action name="logoutForm" path="/logout"
+			type="org.sgrp.singer.action.LogoutAction" validate="false" scope="request">
+			<forward name="success" path="/index.jsp" />
+		</action>
+		<action name="loginForm" path="/login"
+			type="org.sgrp.singer.action.LoginAction" validate="true" scope="request"
+			input="/index.jsp?*">
+			<forward name="success" path="/index.jsp" />
+			<forward name="failure" path="/index.jsp" />
+		</action>
+		<action path="/prepareMemberForm" type="org.sgrp.singer.action.PrepareMemberAction">
+			<forward name="success" path="/member_popup.jsp" />
+		</action>
+		<action path="/addMember" name="memberForm"
+			type="org.sgrp.singer.action.AddMemberAction" input="/member_popup.jsp"
+			scope="request" validate="true">
+			<forward name="success" path="/close_popup_reload_main.jsp" />
+			<forward name="failure" path="/prepareMemberForm.do" />
+		</action>
+		<action path="/updateMember" name="memberForm"
+			type="org.sgrp.singer.action.EditMemberAction" input="/member_popup.jsp"
+			scope="request" validate="true">
+			<forward name="success" path="/close_popup_reload_main.jsp" />
+			<forward name="failure" path="/prepareMemberForm" />
+		</action>
+		<action path="/prepareSearchForm" type="org.sgrp.singer.action.PrepareSearchAction">
+			<forward name="success" path="/advsearch.jsp" />
+		</action>
+		<action name="searchForm" path="/doSearch"
+			type="org.sgrp.singer.action.SearchAction" input="/index.jsp?page=queryMaker"
+			scope="request" validate="true">
+			<forward name="success" path="/index.jsp" />
+			<forward name="failure" path="/prepareSearchForm.do" />
+		</action>
+		<!--Added by Gautier for autocompletion-->
+		<action path="/autoCompletion" type="org.sgrp.singer.action.AutoCompletionAction"
+			scope="request">
+		</action>
+		<!-- Added by Gautier for Order History -->
+		<action path="/seePreviousOrder" type="org.sgrp.singer.action.SeePreviousOrderAction"
+			scope="request">
+			<forward name="success" path="/previousOrder.jsp" />
+		</action>
+		<!-- Added by Guilhem for pre-PID order recovery -->
+		<action name="recoverPreviousOrders" path="/recoverPreviousOrders"
+			type="org.sgrp.singer.action.RecoverPrePidOrderAction" input="/index.jsp?page=recoverPreviousOrders"
+			scope="request">
+			<forward name="success" path="/index.jsp?page=seePreviousOrder.do" />
+		</action>
+		<!-- Added by Gautier for Connection Demo with the PID server -->
+		<action path="/loginpid" type="org.sgrp.singer.action.LoginPIDAction"
+			name="loginPIDForm" validate="true" scope="request" input="/index.jsp?*">
+			<forward name="success" path="/index.jsp" />
+			<forward name="failure" path="/index.jsp" />
+		</action>
+		<!--Added by Gautier for QueryMaker-->
+		<action path="/addField" type="org.sgrp.singer.action.AddFieldAction"
+			scope="request">
+		</action>
+
+	</action-mappings>
+	<message-resources parameter="ApplicationResources"
+		null="false" />
+	<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+		<set-property property="definitions-parser-validate"
+			value="false" />
+		<set-property property="pathnames"
+			value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml" />
+	</plug-in>
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-parser-validate"
+			value="false" />
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
+	</plug-in>
+</struts-config>

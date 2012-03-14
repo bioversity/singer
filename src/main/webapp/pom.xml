@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.bioversityinternational</groupId>
+	<artifactId>Singer</artifactId>
+	<name>Singer</name>
+	<version>0.1</version>
+	<description></description>
+	<repositories>
+		<repository>
+			<id>java.net</id>
+			<url>http://download.java.net/maven/1/</url>
+			<layout>legacy</layout>
+		</repository>
+		<repository>
+			<id>javacarver</id>
+			<url>http://repo.javacarver.com/</url>
+		</repository>
+		<repository>
+			<id>GCP</id>
+			<url>http://maven.generationcp.org/m2repo/</url>
+		</repository>
+		<repository>
+			<id>jboss</id>
+			<url>http://repository.jboss.org/maven2/</url>
+		</repository>
+	</repositories>
+
+	<properties>
+		<cxf.version>2.2.2</cxf.version>
+		<spring.version>2.5.5</spring.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+
+		<dependency>
+			<artifactId>mysql-connector-java</artifactId>
+			<groupId>mysql</groupId>
+			<version>3.1.12</version>
+		</dependency>
+
+	 	<dependency>
+			<groupId>org.apache.lucene</groupId>
+			<artifactId>lucene-core</artifactId>
+			<version>2.4.0</version>
+	 	</dependency>
+
+		<dependency>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.2.4</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>jfree</groupId>
+		    <artifactId>jfreechart</artifactId>
+		    <version>1.0.12</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>com.thoughtworks.xstream</groupId>
+		    <artifactId>xstream</artifactId>
+		    <version>1.3.1</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.apache.xmlrpc</groupId>
+		    <artifactId>xmlrpc-client</artifactId>
+		    <version>3.1.3</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>ws-commons-util</groupId>
+		    <artifactId>ws-commons-util</artifactId>
+		    <version>1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1</version>
+		</dependency>
+	
+	 	<dependency>
+	 	  	<groupId>javax.mail</groupId>
+	 	    <artifactId>mail</artifactId>
+	 	    <version>1.4.1</version>
+	 	</dependency>
+ 	
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>maven-jetty-plugin</artifactId>
+				<version>6.1.8</version>
+				<configuration>
+					<contextPath>cxf-webservices</contextPath>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

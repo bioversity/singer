@@ -1,0 +1,82 @@
+<%@ taglib uri="/WEB-INF/struts-html.tld" prefix="html"%>
+<%@ taglib uri="/WEB-INF/struts-bean.tld" prefix="bean"%>
+<%@ page import="org.sgrp.singer.SearchResults"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.Iterator"%>
+<%@page import="org.sgrp.singer.AccessionConstants"%>
+<%@page import=" org.apache.lucene.document.Document" %>
+
+<div><br />
+<table width="100% nowrap="nowrap">
+	<tr>
+		<td width="100%" nowrap="nowrap">
+		<div id="navcontainer">
+		<ul>
+
+			<!-- "0-9"-->
+			<%
+	String genus = request.getParameter(AccessionConstants.GENUS);
+	String alphaArray[] = new String[] { "A", "B", "C", "D", "E", "F",
+	"G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+	"S", "T", "U", "V", "W", "X", "Y", "Z" };
+
+		String letter = request.getParameter("l");
+		if (letter == null || letter.trim().length() == 0)
+			letter = "a";
+		String alphabet = null;
+		for (int i = 0; i < alphaArray.length; i++) {
+			String selected = "N";
+			String dispAlpha = alphaArray[i];
+			alphabet = alphaArray[i].toLowerCase();
+			if (letter != null) {
+				if (alphabet.equals(letter.toLowerCase()))
+			selected = "Y";
+			}
+			
+	%>
+			<li id=<%=selected.equals("Y")?"navselected":"navlist"%>><a
+				href="/index.jsp?page=atoz&l=<%=alphabet%>"> <i><%=dispAlpha%></i> </a></li>
+			<%
+	}
+	%>
+		</ul>
+		</div>
+		</td>
+	</tr>
+</table>
+<table width="100%">
+	<tr>
+		<td width="5%" />
+		<td width="45%" valign="top" nowrap=nowrap>
+		<div>
+		<%
+		Map<String,String> map = SearchResults.getInstance().getGenusListByAlphabet(letter);
+		for (Iterator<String> it=map.keySet().iterator(); it.hasNext(); ) {
+				String id = it.next();
+				String name = map.get(id);
+		%> 
+        <a class="headerlinks"
+			href="/index.jsp?page=showkeycount&search=<%=AccessionConstants.GENUSCODE+AccessionConstants.SPLIT_KEY+id%>"><i><%=AccessionConstants.makeProper(name)%></i></a>
+		<a class="headerlinks"
+			href="/index.jsp?page=showkeycount&search=<%=AccessionConstants.GENUSCODE+AccessionConstants.SPLIT_KEY+id%>"><img
+			src="/img/page.png" border="0" width="14" height="14" /></a><br />
+
+		<%
+		}
+		%>
+		</div>
+		<br />
+		<br />
+		</td>
+		<td width="50%" valign="top">
+		<%
+			if(genus!=null && genus.trim().length()>0)
+			{
+				String gLink = "/speciesatoz.jsp?"+AccessionConstants.GENUS+"="+genus;
+			%> <jsp:include flush="true" page="<%=gLink%>" /> <%	
+			}
+		%>
+		</td>
+	</tr>
+</table>
+</div>

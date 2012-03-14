@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd"> <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+<appender name="INDEXING_ERROR_FILE" class="org.apache.log4j.FileAppender">
+    <param name="threshold" value="ERROR"/>
+    <param name="File" value="/singer_indexing/singer_indexing_error.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd/MM HH:mm:ss} | %-5p | %-12t |%-60.60C %4L | %m%n"/>
+    </layout>
+</appender>
+
+<appender name="INDEXING_WARN_FILE" class="org.apache.log4j.FileAppender">
+    <param name="threshold" value="WARN"/>
+    <param name="File" value="/singer_indexing/singer_indexing_warn.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd/MM HH:mm:ss} | %-5p | %-12t |%-60.60C %4L | %m%n"/>
+    </layout>
+</appender>
+
+<appender name="INDEXING_INFO_FILE" class="org.apache.log4j.FileAppender">
+    <param name="threshold" value="INFO"/>
+    <param name="File" value="/singer_indexing/singer_indexing_info.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd/MM HH:mm:ss} | %-5p | %-12t |%-60.60C %4L | %m%n"/>
+    </layout>
+</appender>
+
+<appender name="INDEXING_DEBUG_FILE" class="org.apache.log4j.FileAppender">
+    <param name="threshold" value="DEBUG"/>
+    <param name="File" value="/singer_indexing/singer_indexing_debug.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd/MM HH:mm:ss} | %-5p | %-12t |%-60.60C %4L | %m%n"/>
+    </layout>
+</appender>
+    
+<!-- Otherwise we will only display ERROR messages -->
+<root>
+   <priority value="DEBUG" />
+    <appender-ref ref="INDEXING_ERROR_FILE" />
+    <appender-ref ref="INDEXING_WARN_FILE" />
+    <appender-ref ref="INDEXING_INFO_FILE" />
+    <appender-ref ref="INDEXING_DEBUG_FILE" />
+</root>
+
+</log4j:configuration>

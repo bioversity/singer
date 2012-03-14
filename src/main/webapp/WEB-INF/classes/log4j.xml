@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd"> <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<appender name="console" class="org.apache.log4j.ConsoleAppender">
+   <param name="Target" value="System.out"/>
+   <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd/MM HH:mm:ss} | %-5p | %-12t |%-60.60C %4L | %m%n"/>
+   </layout>
+</appender>
+
+<appender name="FILE" class="org.apache.log4j.FileAppender">
+    <param name="threshold" value="DEBUG"/>
+    <param name="File" value="${catalina.home}/logs/singer.log"/>
+    <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd/MM HH:mm:ss} | %-5p | %-12t |%-60.60C %4L | %m%n"/>
+    </layout>
+</appender>
+
+<category name="org.sgrp">
+    <priority value="DEBUG"/>
+</category>
+    
+<!-- Otherwise we will only display ERROR messages -->
+<root>
+   <priority value="INFO" />
+<!--   <appender-ref ref="FILE" />-->
+    <appender-ref ref="console" />  
+</root>
+
+</log4j:configuration>

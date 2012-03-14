@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<!--xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" -->
+	<display-name>Singer</display-name>
+	<context-param>
+		<param-name>webmaster</param-name>
+		<param-value>k.viparthi@cgiar.org</param-value>
+		<description>
+        The EMAIL address of the administrator to whom questions
+        and comments about this application should be addressed.
+      </description>
+	</context-param>
+	<filter>
+		<filter-name>SingerLoginFilter</filter-name>
+		<filter-class>org.sgrp.singer.filters.SingerLoginFilter</filter-class>
+		<init-param>
+			<param-name>rolesFile</param-name>
+			<param-value>/WEB-INF/roles.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>0</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SingerLoginFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-bean.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-html.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-logic.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-tiles.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/WEB-INF/struts-nested.tld</taglib-uri>
+			<taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>org.sgrp.singer.AccessionServlet</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>/WEB-INF/struts-config.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>debug</param-name>
+			<param-value>2</param-value>
+		</init-param>
+		<init-param>
+			<param-name>PROP_FILE</param-name>
+			<param-value>/WEB-INF/singer.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+    <!-- temporary data dictionary mapping -->
+    <servlet>
+        <servlet-name>Data Dictionary</servlet-name>
+		<servlet-class>org.sgrp.singer.datadictionary.DataDictionary</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Vote</servlet-name>
+		<servlet-class>org.sgrp.singer.datadictionary.Vote</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Vote</servlet-name>
+        <url-pattern>/data-dictionary/vote</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Data Dictionary</servlet-name>
+        <url-pattern>/data-dictionary/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
