@@ -186,7 +186,6 @@ public class OrderEmailManager extends DataManager {
 				HashMap<String, ArrayList<String>> cMap = eMap.get(pemail);				
 				try {
 					String providerHTML = getProviderHTMLMessage(membForm, cMap, orderid, comments, smta);
-                    pemail = "l.matteis@cgiar.org";
 					boolean sent = MailUtils.sendOrderMail(pemail, "Germplasm request #"+orderid+"  through SINGER - PLEASE DO NOT RESPOND TO THIS EMAIL ", providerHTML);
 					System.out.println("Email Sent " + sent +" to "+pemail+"\n"+providerHTML);
 				} catch (Exception e) {

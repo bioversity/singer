@@ -57,7 +57,7 @@ if (isLoggedIn(request.getSession(true)))
 %> <br />
 <br />
 <br />
-<b> Thank your for Ordering through SINGER.<br />
+<b> Hello, thank your for Ordering through SINGER.<br />
 Your order will be forwarded to the respective institutes for further processing.<br />
 You will be directly contacted by the institute if and for any other information required.<br />
 A confirmation email of the ordered material will be shortly sent to your email account. </b> <br />
