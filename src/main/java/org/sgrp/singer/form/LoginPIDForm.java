@@ -37,27 +37,19 @@ public class LoginPIDForm extends GenericForm {
 		
 		if (!isNull(getUserid()) && !isNull(getUpassword()))
 		{
-			try
-			{
-				memberDetails = UserManager.getInstance().loginPID(getUserid(), getUpassword());
-			}
-			catch (Exception e)
-			{
-				if (e instanceof XmlRpcException && "Wrong username or password.".equals(e.getMessage()))
-				{
-					/*If the user is not registered by the PID, we check if he is an ancient SINGER member*/
-					if(UserManager.getInstance().loginValid(getUserid(), getUpassword()))
-					{
-						errors.add("oldLogin", ErrorConstants.getActionMessage(ErrorConstants.ERROR_OLD_SINGER_LOGIN));
-					}
-					else
-					{
-						errors.add("error", ErrorConstants.getActionMessage(ErrorConstants.ERROR_INVALID_LOGIN));
-					}
-				}
-				else
-					LOG.error(e);
-			}
+            //LOG.info("login info: " + getUserid() + " --- " + getUpassword());
+            memberDetails = UserManager.getInstance().loginPID(getUserid(), getUpassword());
+            if(memberDetails == null) {
+                /*If the user is not registered by the PID, we check if he is an ancient SINGER member*/
+                if(UserManager.getInstance().loginValid(getUserid(), getUpassword()))
+                {
+                    errors.add("oldLogin", ErrorConstants.getActionMessage(ErrorConstants.ERROR_OLD_SINGER_LOGIN));
+                }
+                else
+                {
+                    errors.add("error", ErrorConstants.getActionMessage(ErrorConstants.ERROR_INVALID_LOGIN));
+                }
+            }
 		}
 		
 		if (errors.size() > 0) {

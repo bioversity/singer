@@ -1,5 +1,9 @@
 package org.sgrp.singer.db;
 
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
 import java.net.MalformedURLException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -9,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Map;
+
+import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,8 +27,12 @@ import org.sgrp.singer.form.PIDMemberForm;
 import org.sgrp.singer.indexer.Keywords;
 import org.sgrp.singer.xmlrpc.DrupalXmlRpcService;
 
+import org.json.*;
+
 public class UserManager {
 	public static UserManager	mgr;
+
+	private static Logger LOG = Logger.getLogger("");
 
 	public void saveUser(MemberForm memb) throws SQLException {
 		if (memb == null) { throw new SQLException(ResourceManager.getString("save.user.null")); }
@@ -200,28 +210,50 @@ public class UserManager {
 	 * @throws XmlRpcException 
 	 * @throws Exception 
 	 */
-	public PIDMemberForm loginPID (String userId, String password) throws InvalidKeyException, IllegalStateException, NoSuchAlgorithmException, MalformedURLException, XmlRpcException
+	public PIDMemberForm loginPID (String userId, String password) 
 	{
 		PIDMemberForm member = new PIDMemberForm();
 		//final String serviceURL = "http://mls.planttreaty.org/itt/services/xmlrpc";
-		final String serviceURL = "http://mls.planttreaty.org/Ex_itt/services/xmlrpc";
+		//final String serviceURL = "http://mls.planttreaty.org/Ex_itt/services/xmlrpc";
+		//final String serviceURL = "http://www.itworks.it/itt/index.php?r=extsys/getUserDetails&esUsername=SINGER&esPassword=F3rrar1n0&username=" + userId + "&password=" + password;
+		final String serviceURL = "https://mls.planttreaty.org/itt/index.php?r=extsys/getUserDetails&esUsername=SINGER&esPassword=F3rrar1n0&username=" + userId + "&password=" + password;
 		DrupalXmlRpcService service;
 		try
 		{
-			service = new DrupalXmlRpcService("www.singer.cgiar.org", "73f568378f65c59b3c264186311602b4", serviceURL);
-		    service.connect();
-			Integer uid = service.login(userId, password);
-			
-			Map<String,String> userDetails = ((Map<String,String>)((Object[])service.getUserDetails(uid))[0]);
-			
-			member.setNfname(userDetails.get(AccessionConstants.USER_FIRST_NAME));
-			member.setNlname(userDetails.get(AccessionConstants.USER_LAST_NAME));
+            // make request to the treaty server
+            URL pidServer = new URL(serviceURL);
+            URLConnection pidConn = pidServer.openConnection();
+            BufferedReader in = new BufferedReader(
+                                    new InputStreamReader(
+                                    pidConn.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) 
+                response.append(inputLine);
+
+            in.close();
+
+            // parse the json response
+            JSONObject obj = new JSONObject(response.toString());
+            if(obj.has("errorCode")) {
+                throw new Exception(obj.getString("errorMessage"));
+            }
+
+            // login successful
+			member.setNfname(obj.getString("name"));
+			member.setNlname(obj.getString("surname"));
 			member.setNemail(null);
 			member.setNCompany(null);
-			member.setNType(userDetails.get(AccessionConstants.USER_TYPE));
-			String cty = userDetails.get(AccessionConstants.USER_COUNTRY);
-			member.setNCountry(Keywords.getInstance().getAllOrigMap().get(AccessionConstants.COUNTRY+cty.toLowerCase()));
-			member.setNuserpid(userDetails.get(AccessionConstants.USER_PID));
+			member.setNType(obj.getString("type"));
+			//String cty = userDetails.get(AccessionConstants.USER_COUNTRY);
+			member.setNCountry(obj.getString("country"));
+			member.setNuserpid(obj.getString("pid"));
+
+            member.setNShippingAddress(obj.getString("shipAddress"));
+            member.setNZip(null);
+            member.setNCity(null);
+            /*
 			if(userDetails.get(AccessionConstants.USER_ADDRESS_TO_USE).equals("Another"))
 			{
 				member.setNShippingAddress(userDetails.get(AccessionConstants.USER_SHIPPING_ADDRESS));
@@ -234,17 +266,16 @@ public class UserManager {
                 member.setNZip(userDetails.get(AccessionConstants.USER_POSTAL_CODE));
                 member.setNCity(userDetails.get(AccessionConstants.USER_CITY));
 			}
-			member.setNemail(userDetails.get(AccessionConstants.USER_MAIL));
+            */
+			member.setNemail(obj.getString("email"));
 			member.setValidated(true);
-			
-			service.logout();
 		}
 		//This Exception is raised when the authentication failed
-		catch (XmlRpcException e)
+		catch (Exception e)
 		{
 			//e.printStackTrace();
 			member.setValidated(false);
-			throw e;
+            return null;
 		}	
 		
 		return member;
