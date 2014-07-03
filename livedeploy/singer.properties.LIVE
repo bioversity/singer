@@ -10,7 +10,7 @@ TEMPLATES=/opt/tomcat/webapps/singer/WEB-INF/templates
 USER_DATA_ROOT=/work/singerUsersData
 DESCRIPTORS_LINK=http://hq8.grinfo.net:8083
 JDBC_DRIVER=com.mysql.jdbc.Driver
-JDBC_CONNECT_STRING=jdbc:mysql://localhost:3306/singer_latest?user=f07dbmanager&password=2hsnKqCKAf7vTP&autocommit=false&zeroDateTimeBehavior=convertToNull
+JDBC_CONNECT_STRING=jdbc:mysql://localhost:3306/singer_latest?user=f07dbmanager&password=*********&autocommit=false&zeroDateTimeBehavior=convertToNull
 GOOGLE_MAP_KEY_SINGERDEMO=ABQIAAAA166IDnF-TusBuyEMxy4V8RTvQohs8ZEqlh6rfuoELAEEDMbcqhR1fC1YzhOsox9ctL4uXSL5Yq_o1g
 GOOGLE_MAP_KEY=ABQIAAAA166IDnF-TusBuyEMxy4V8RR55X9vBA0rnpwLnM8SvEjW6y2QiRQx-b1qqQbdnBRZAsi2-bAP0kjcKA
 GOOGLE_MAP_KEYsinger.grinfo.net=ABQIAAAA166IDnF-TusBuyEMxy4V8RR55X9vBA0rnpwLnM8SvEjW6y2QiRQx-b1qqQbdnBRZAsi2-bAP0kjcKA
